@@ -1,8 +1,9 @@
+// @deno-types="@types/react"
 import { useEffect, useState } from 'react'
 import './App.css'
 
 import { hc } from 'hono/client'
-import type { App } from '../server'
+import type { App } from '../server/index.ts'
 
 const hono = hc<App>('/api')
 

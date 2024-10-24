@@ -1,6 +1,6 @@
-import { Hono } from 'hono'
-import { stream } from 'hono/streaming'
-import { serve } from '@hono/node-server'
+/// <reference lib="deno.ns" />
+import { Hono } from '@hono/hono'
+import { stream } from '@hono/hono/streaming'
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const app = new Hono()
@@ -29,7 +29,4 @@ const client = app.get('/', (c) => {
 
 export type App = typeof client
 
-serve({
-  fetch: app.fetch,
-  port: 3000,
-})
+Deno.serve({ port: 3000 }, app.fetch)
